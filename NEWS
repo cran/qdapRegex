@@ -1,0 +1,55 @@
+NEWS 
+====
+
+Versioning
+----------
+
+Releases will be numbered with the following semantic versioning format:
+
+<major>.<minor>.<patch>
+
+And constructed with the following guidelines:
+
+* Breaking backward compatibility bumps the major (and resets the minor 
+  and patch)
+* New additions without breaking backward compatibility bumps the minor 
+  (and resets the patch)
+* Bug fixes and misc changes bumps the patch
+
+qdapRegex 0.1.1
+----------------------------------------------------------------
+
+First CRAN Release
+
+NEW FEATURES
+
+* `rm_citation` added for removing/extracting/replacing APA 6 style in-text 
+  citations.
+
+* `rm_white` and accompanying family of `rm_white` functions added to remove 
+  white space.
+
+* `rm_non_ascii` added to remove non-ASCII characters from a string.
+
+* `around_` added to extract word(s) around a given point.
+
+* `pages` and `pages2` added to the `regex_supplement` data set for 
+  removing/extracting/validating page numbers.
+
+IMPROVEMENTS
+
+* `rm_XXX` family of functions now use `stringi::stri_extract_all_regex` as this 
+  approach is much faster than the 
+  `regmatches(text.var, gregexpr(pattern, text.var, perl = TRUE))` approach.
+
+
+
+qdapRegex 0.0.1
+----------------------------------------------------------------
+
+This package is a collection of regex tools associated with the qdap
+package that may be useful outside of the context of discourse analysis.  Tools
+include removal/extraction/replacement of abbreviations, dates, dollar amounts, 
+email addresses, hash tags, numbers, percentages, person tags, phone numbers, 
+times, and zip codes.
+
