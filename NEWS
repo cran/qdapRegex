@@ -16,6 +16,24 @@ And constructed with the following guidelines:
   (and resets the patch)
 * Bug fixes and misc changes bumps the patch
 
+
+qdapRegex 0.1.2
+----------------------------------------------------------------
+
+BUG FIXES
+
+NEW FEATURES
+
+* `bind` added as a convenience function to add a left and right boundary to 
+  each element of a character vector.
+
+MINOR FEATURES
+
+IMPROVEMENTS
+
+CHANGES
+
+
 qdapRegex 0.1.1
 ----------------------------------------------------------------
 

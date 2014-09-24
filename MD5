@@ -1,7 +1,8 @@
-43582a5068493761357f1fd8381a1c11 *DESCRIPTION
-5133b18b9f226bf4416a59812f457dde *NAMESPACE
-1fcbec6c599faac0a7e14f3d36fd4f69 *NEWS
+0badc6bb87abf868d9ae94a653fdeeed *DESCRIPTION
+f2d653915897f1dff7edae833f878064 *NAMESPACE
+2585a5b4c5ba61a4400e65c7c818f4d4 *NEWS
 d729cf2fb98bdb2c8b36ab6949377489 *R/S.R
+03e44ba86e03ba0a0df350adf0cdb20f *R/bind.R
 1ad4d6507606fc5c57eaa05f19c5e042 *R/escape.R
 ab4155a488041153926c0fd275f3efca *R/grab.R
 0fbaf2e26b223bbd7096393ef6fe4684 *R/pastex.R
@@ -34,11 +35,12 @@ db90d0e3abf856ac5ab69a0e38dac530 *R/rm_title_name.R
 167ed34b7ba939ce4055bbcedbd584b5 *R/rm_zip.R
 96b9450234f40a2b8c507604cf4fece8 *R/utils.R
 09569b113c0edb2a0797ef43650c7e39 *R/validate.R
-c53c6be0ef34244769e28c742d0810d8 *README.md
+91ecb0f2ea3ee02e6d1614897c4a17cb *README.md
 d79334398ce935aee10b19b656040993 *data/regex_supplement.rda
 65b7c0ff31cd891eae33bce26623b37b *data/regex_usa.rda
-f63d89bdfd4749b20690e81128d843e6 *inst/CITATION
+ac82689b2cf5ddd3e6da43389c082bf1 *inst/CITATION
 44f8b38ec332800f16d35a2c18758f9d *man/S.Rd
+86f51cb4bfaee2b8aceb1dd9c9d73160 *man/bind.Rd
 d78fc7c81817af2f731cd43bdd5b5ef4 *man/escape.Rd
 4bbef39d9ae6ea692661ed2f80b817ba *man/grab.Rd
 1476f44d4a959de0028e855ef60a0aa9 *man/pastex.Rd
@@ -73,6 +75,7 @@ c36c1f188570d8ea31925ba029a65fad *man/rm_white.Rd
 88b2132fcc7f937cb46f9cc7e8eaa420 *man/rm_zip.Rd
 177437bbef3844239ae4694a75a076e7 *man/validate.Rd
 fb46b47c6a31bb86f4336406a218eefc *tests/testthat.R
+39c1e970846a0e6e711b024b9d0f6908 *tests/testthat/test-bind.R
 75073537d09bb0fed588575c28269c77 *tests/testthat/test-escape.R
 3af8e48adfe03a7352d6e08ffba50485 *tests/testthat/test-grab.R
 a7b2d670b0578d93bbfac81519ba14fb *tests/testthat/test-pastex.R
