@@ -6,7 +6,7 @@
 grab(pattern, dictionary = getOption("regex.library"))
 }
 \arguments{
-\item{pattern}{A character string starting with \code{"@"} and a regular
+\item{pattern}{A character string starting with \code{"@"} that is a regular
 expression from a \pkg{qdapRegex} dictionary.}
 
 \item{dictionary}{A dictionary of canned regular expressions to search within.}
@@ -21,7 +21,8 @@ convenience function to
 \details{
 Many R regular expressions contain doubled backslashes that are not
 used in other regex interpreters.  Using \code{\link[base]{cat}} can remove
-backslash escapes (see \bold{Examples}).
+backslash escapes (see \bold{Examples}) or \code{\link[utils]{URLencode}}
+if using in a url.
 }
 \examples{
 grab("@rm_white")

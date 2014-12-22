@@ -4,16 +4,19 @@
 \alias{pastex}
 \title{Paste Regular Expressions}
 \usage{
-pastex(..., dictionary = getOption("regex.library"))
+pastex(..., sep = "|", dictionary = getOption("regex.library"))
 
 x \%|\% y
 }
 \arguments{
+\item{sep}{The separator to use between the expressions when they are
+collapsed.}
+
 \item{dictionary}{A dictionary of canned regular expressions to search within.}
 
 \item{x,y}{Two regular expressions to paste together.}
 
-\item{\ldots}{Ray regular expressions to paste together or a named expression
+\item{\ldots}{Regular expressions to paste together or a named expression
 from the default regular expression dictionary prefixed with single at
 (\code{@}) (e.g., \code{"@rm_hash"}) or a regular expression from
 \code{\link[qdapRegex]{regex_supplement}} dictionary prefixed with an at

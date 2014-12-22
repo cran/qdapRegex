@@ -5,11 +5,13 @@
 #' dictionaries for regular expressions before pasting them together with a pipe 
 #' (\code{|}) separator.
 #' 
-#' @param \ldots Ray regular expressions to paste together or a named expression 
+#' @param \ldots Regular expressions to paste together or a named expression 
 #' from the default regular expression dictionary prefixed with single at 
 #' (\code{@@}) (e.g., \code{"@@rm_hash"}) or a regular expression from 
 #' \code{\link[qdapRegex]{regex_supplement}} dictionary prefixed with an at 
 #' (\code{@@}) (e.g., \code{"@@time_12_hours"}).
+#' @param sep The separator to use between the expressions when they are 
+#' collapsed.
 #' @param dictionary A dictionary of canned regular expressions to search within.
 #' @return Returns a single string of regular expressions pasted together with 
 #' pipe(s) (\code{|}).
@@ -57,14 +59,16 @@
 #' rm_twitter_n_url <- rm_(pattern="@@rm_twitter_url" %|% "@@rm_url")  
 #' rm_twitter_n_url(x)
 #' rm_twitter_n_url(x, extract=TRUE)
-pastex <- function(..., dictionary = getOption("regex.library")){
-
+pastex <-
+function (..., sep = "|", dictionary = getOption("regex.library")) {
     out <- lapply(list(...), function(x) {
-    	reg_check(x, dictionary=dictionary)
+        if (length(x) > 1) return(x)
+        reg_check(x, dictionary = dictionary)
     })
-    paste(unlist(out), collapse="|")
 
+    paste(unlist(out), collapse = sep)
 }
+
 
 
 

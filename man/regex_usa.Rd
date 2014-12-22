@@ -3,7 +3,7 @@
 \name{regex_usa}
 \alias{regex_usa}
 \title{Canned Regular Expressions (United States of America)}
-\format{A list with 45 elements}
+\format{A list with 49 elements}
 \usage{
 data(regex_usa)
 }
@@ -18,6 +18,7 @@ The following canned regular expressions are included:
   \item{rm_between}{Remove characters between a left and right boundary including the boundaries; note contains \code{"\%s"} that is replaced by \code{\link[base]{sprintf}} and is not a valid regex on its own}
   \item{rm_between2}{Remove characters between a left and right boundary NOT including the boundaries; note contains \code{"\%s"} that is replaced by \code{\link[base]{sprintf}} and is not a valid regex on its own}
   \item{rm_caps}{words containing 2 or more consecutive upper case letters and no lower case}
+  \item{rm_caps_phrase}{phrases of 1 word or more containing 1 or more consecutive upper case letters and no lower case; if phrase is one word long then phrase must be 2 or more consecutive capital letters}
   \item{rm_citation}{substring that looks for in-text and parenthetical APA6 style citations (attempts to exclude references)}
   \item{rm_citation2}{substring that looks for in-text APA6 style citations (attempts to exclude references)}
   \item{rm_citation3}{substring that looks for parenthetical APA6 style citations (attempts to exclude references)}
@@ -40,10 +41,12 @@ The following canned regular expressions are included:
   \item{rm_number}{substring that may begin with dash (-) for negatives, and is (1) just whole number (no decimal), (2) whole number and decimal, or (3) just decimal value}
   \item{rm_percent}{substring beginning with (1) just whole number (no decimal), (2) whole number and decimal, or (3) just decimal value and followed by a percent sign (\%)}
   \item{rm_phone}{phone numbers in the form of optional country code, valid 3 digit prefix, and 7 digits (may contain hyphens and parenthesis); logic is complex to explain (see \url{http://stackoverflow.com/a/21008254/1000343} for more)}
+  \item{rm_postal_code}{U.S. state abbreviations (and District of Columbia) that is constrained to just possible U.S. state names, not just two consecutive capital letters; taken from Mike Hamilton's submission found \url{http://regexlib.com/REDetails.aspx?regexp_id=2177}}
   \item{rm_tag}{substring that begins with an at (@) followed by a word}
   \item{rm_tag2}{\href{https://support.twitter.com/articles/101299-why-can-t-i-register-certain-usernames}{Twitter} substring that begins with an at (@) followed by a word composed of alpha-numeric characters and underscores, no longer than 15 characters}
   \item{rm_title_name}{substring beginning with title (Mrs., Mr., Ms., Dr.) that is case independent or full title (Miss, Mizz, mizz) followed by a single lower case word or multiple capitalized words}
   \item{rm_time}{substring that (1) must begin with 0-2 digits, (2) must be followed by a single colon (:), (3) optionally may be followed by either a colon (:) or a dot (.), (4) optionally may be followed by 1-infinite digits (if previous condition is true)}
+  \item{rm_time2}{substring that is identical to \code{rm_time} with the additional search for Ante Meridiem/Post Meridiem abbreviations (e.g., AM, p.m., etc.)}
   \item{rm_twitter_url}{\href{https://twitter.com/}{Twitter} \href{https://support.twitter.com/articles/109623-about-twitter-s-link-service-http-t-co}{short link/url}; substring optionally beginning with \emph{http}, followed by \emph{t.co} ending on a space or end of string (whichever comes first)}
   \item{rm_url}{substring beginning with \emph{http}, \emph{www.}, or \emph{ftp} and ending on a space or end of string (whichever comes first); note that this regex is simple and may not cover all valid URLs or may include invalid URLs}
   \item{rm_url2}{substring beginning with \emph{http}, \emph{www.}, or \emph{ftp} and more constrained than \code{rm_url}; based on @imme_emosol's response from \url{https://mathiasbynens.be/demo/url-regex}}
@@ -59,7 +62,6 @@ The following canned regular expressions are included:
   \item{rm_white_punctuation}{substring of white space(s) preceding a comma or a single occurrence/combination of colon(s), semicolon(s), period(s), question mark(s), and exclamation point(s)}
   \item{rm_white_trail}{substring of trailing white space(s)}
   \item{rm_zip}{substring of 5 digits optionally followed by a dash and 4 more digits}
-  \item{youtube_id}{substring of the video id from a \href{YouTube}{https://www.youtube.com/} video; ; taken from Jacob Overgaard's submission found \url{http://regex101.com/r/kU7bP8/1}}
 }
 }
 \keyword{datasets}

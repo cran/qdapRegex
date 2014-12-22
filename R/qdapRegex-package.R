@@ -1,6 +1,6 @@
 #' qdapRegex: Regular Expression Removal, Extraction, & Replacement Tools for the \pkg{qdap} Package
 #'
-#' \pkg{qdapRegex} is a collection of  regular expression tools associated with 
+#' \pkg{qdapRegex} is a collection of regular expression tools associated with 
 #' the \pkg{qdap} package that may be useful outside of the context of discourse
 #' analysis.  Tools include removal/extraction/replacement of abbreviations, 
 #' dates, dollar amounts, email addresses, hash tags, numbers, percentages, 
@@ -20,6 +20,26 @@
 #' @aliases qdapRegex package-qdapRegex
 NULL
 
+#' 
+#' A dataset containing the regex chunk name, the regex string, and a 
+#' description of what the chunk does.
+#' 
+#' @details 
+#' \itemize{ 
+#'   \item Name. The name of the regex chunk.
+#'   \item Regex. The regex chunk.
+#'   \item What it Does. Description of what the regex chunk does.
+#' } 
+#' 
+#' @docType data 
+#' @keywords datasets 
+#' @name regex_cheat 
+#' @usage data(regex_cheat) 
+#' @format A data frame with 6 rows and 3 variables 
+#' @references \url{http://www.rexegg.com}
+NULL
+
+
 #' Canned Regular Expressions (United States of America)
 #' 
 #' A dataset containing a list U.S. specific, canned regular expressions for use
@@ -33,6 +53,7 @@ NULL
 #'   \item{rm_between}{Remove characters between a left and right boundary including the boundaries; note contains \code{"\%s"} that is replaced by \code{\link[base]{sprintf}} and is not a valid regex on its own}
 #'   \item{rm_between2}{Remove characters between a left and right boundary NOT including the boundaries; note contains \code{"\%s"} that is replaced by \code{\link[base]{sprintf}} and is not a valid regex on its own}
 #'   \item{rm_caps}{words containing 2 or more consecutive upper case letters and no lower case}
+#'   \item{rm_caps_phrase}{phrases of 1 word or more containing 1 or more consecutive upper case letters and no lower case; if phrase is one word long then phrase must be 2 or more consecutive capital letters}
 #'   \item{rm_citation}{substring that looks for in-text and parenthetical APA6 style citations (attempts to exclude references)}
 #'   \item{rm_citation2}{substring that looks for in-text APA6 style citations (attempts to exclude references)}
 #'   \item{rm_citation3}{substring that looks for parenthetical APA6 style citations (attempts to exclude references)}
@@ -55,10 +76,12 @@ NULL
 #'   \item{rm_number}{substring that may begin with dash (-) for negatives, and is (1) just whole number (no decimal), (2) whole number and decimal, or (3) just decimal value}
 #'   \item{rm_percent}{substring beginning with (1) just whole number (no decimal), (2) whole number and decimal, or (3) just decimal value and followed by a percent sign (\%)}
 #'   \item{rm_phone}{phone numbers in the form of optional country code, valid 3 digit prefix, and 7 digits (may contain hyphens and parenthesis); logic is complex to explain (see \url{http://stackoverflow.com/a/21008254/1000343} for more)}
+#'   \item{rm_postal_code}{U.S. state abbreviations (and District of Columbia) that is constrained to just possible U.S. state names, not just two consecutive capital letters; taken from Mike Hamilton's submission found \url{http://regexlib.com/REDetails.aspx?regexp_id=2177}}
 #'   \item{rm_tag}{substring that begins with an at (@@) followed by a word}
 #'   \item{rm_tag2}{\href{https://support.twitter.com/articles/101299-why-can-t-i-register-certain-usernames}{Twitter} substring that begins with an at (@@) followed by a word composed of alpha-numeric characters and underscores, no longer than 15 characters}
 #'   \item{rm_title_name}{substring beginning with title (Mrs., Mr., Ms., Dr.) that is case independent or full title (Miss, Mizz, mizz) followed by a single lower case word or multiple capitalized words}
 #'   \item{rm_time}{substring that (1) must begin with 0-2 digits, (2) must be followed by a single colon (:), (3) optionally may be followed by either a colon (:) or a dot (.), (4) optionally may be followed by 1-infinite digits (if previous condition is true)}
+#'   \item{rm_time2}{substring that is identical to \code{rm_time} with the additional search for Ante Meridiem/Post Meridiem abbreviations (e.g., AM, p.m., etc.)}
 #'   \item{rm_twitter_url}{\href{https://twitter.com/}{Twitter} \href{https://support.twitter.com/articles/109623-about-twitter-s-link-service-http-t-co}{short link/url}; substring optionally beginning with \emph{http}, followed by \emph{t.co} ending on a space or end of string (whichever comes first)}
 #'   \item{rm_url}{substring beginning with \emph{http}, \emph{www.}, or \emph{ftp} and ending on a space or end of string (whichever comes first); note that this regex is simple and may not cover all valid URLs or may include invalid URLs}
 #'   \item{rm_url2}{substring beginning with \emph{http}, \emph{www.}, or \emph{ftp} and more constrained than \code{rm_url}; based on @@imme_emosol's response from \url{https://mathiasbynens.be/demo/url-regex}}
@@ -74,11 +97,13 @@ NULL
 #'   \item{rm_white_punctuation}{substring of white space(s) preceding a comma or a single occurrence/combination of colon(s), semicolon(s), period(s), question mark(s), and exclamation point(s)}
 #'   \item{rm_white_trail}{substring of trailing white space(s)}
 #'   \item{rm_zip}{substring of 5 digits optionally followed by a dash and 4 more digits} 
-#'   \item{youtube_id}{substring of the video id from a \href{YouTube}{https://www.youtube.com/} video; ; taken from Jacob Overgaard's submission found \url{http://regex101.com/r/kU7bP8/1}}
 #' }
 #' @name regex_usa 
+#' @details Use \code{qdapRegex:::examine_regex()} to interactively explore the 
+#' regular expressions in \code{regex_usa}.  This will provide a browser + console
+#' based break down of each regex in the dictionary.
 #' @usage data(regex_usa) 
-#' @format A list with 45 elements 
+#' @format A list with 49 elements 
 NULL
 
 #' Supplemental Canned Regular Expressions
@@ -102,14 +127,19 @@ NULL
 #'   \item{before_}{find sing word before ? word (? = user defined); note contains \code{"\%s"} that is replaced by \code{\link[base]{sprintf}} and is not a valid regex on its own}
 #'   \item{hexadecimal}{substring beginning with hash (#) followed by either 3 or 6 select characters (a-f, A-F, and 0-9)}
 #'   \item{ip_address}{substring of four chunks of 1-3 consecutive digits separated with dots (.)}
+#'   \item{last_occurrence}{last occurrence of a delimiter; note contains \code{"\%s"} that is replaced by \code{\link[base]{sprintf}} and is not a valid regex on its own (user supplies the delimiter)}
 #'   \item{pages}{substring with "pp." or "p.", optionally followed by a space, followed by 1 or more digits, optionally followed by a dash, optionally followed by 1 or more digits, optionally followed by a semicolon, optionally followed by a space, optionally followed by 1 or more digits; intended for extraction/removal purposes}
 #'   \item{pages2}{substring 1 or more digits, optionally followed by a dash, optionally followed by 1 or more digits, optionally followed by a semicolon, optionally followed by a space, optionally followed by 1 or more digits; intended for validation purposes}
 #'   \item{split_keep_delim}{regex string that splits on a delimiter and retains the delimiter}
 #'   \item{thousands_separator}{chunks digits > 4 into groups of 3 from right to left allowing for easy insertion of thousands separator; regex pattern retrieved from \href{http://stackoverflow.com/}{StackOverflow}'s stema: \url{http://stackoverflow.com/a/10612685/1000343}}
 #'   \item{time_12_hours}{substring of valid hours (1-12) followed by a colon (:) followed by valid minutes (0-60), followed by an optional space and the character chunk \emph{am} or \emph{pm}} 
-#'   \item{white_after_comma}{substring of white space after a comma}
 #'   \item{version}{substring starting with "v" or "version" optionally followed by a space and then period separated digits for <major>.<minor>.<release>.<build>; the build sequence is optional and the "version"/"v" IS NOT contained in the substring}
 #'   \item{version2}{substring starting with "v" or "version" optionally followed by a space and then period separated digits for <major>.<minor>.<release>.<build>; the build sequence is optional and the "version"/"v" IS contained in the substring}
+#'   \item{white_after_comma}{substring of white space after a comma}
+#'   \item{word_boundary}{A true word boundary that only includes alphabetic characters; based on \url{www.rexegg.com}'s suggestion taken from \href{http://www.rexegg.com/regex-boundaries.html#real-word-boundary}{discussion of true word boundaries}; note contains \code{"\%s"} that is replaced by \code{\link[base]{sprintf}} and is not a valid regex on its own}
+#'   \item{word_boundary_left}{A true left word boundary that only includes alphabetic characters; based on \url{www.rexegg.com}'s suggestion taken from \href{http://www.rexegg.com/regex-boundaries.html#real-word-boundary}{discussion of true word boundaries}}
+#'   \item{word_boundary_right}{A true right word boundary that only includes alphabetic characters; based on \url{www.rexegg.com}'s suggestion taken from \href{http://www.rexegg.com/regex-boundaries.html#real-word-boundary}{discussion of true word boundaries}}	
+#'   \item{youtube_id}{substring of the video id from a \href{https://www.youtube.com}{YouTube} video; taken from Jacob Overgaard's submission found \url{http://regex101.com/r/kU7bP8/1}}
 #' } 
 #' 
 #' Regexes from this data set can be added to the \code{pattern} argument of any 
@@ -122,7 +152,10 @@ NULL
 #' \code{\link[qdapRegex]{S}} is useful for adding these missing \code{\%s} 
 #' parameters.
 #' @usage data(regex_supplement) 
-#' @format A list with 17 elements
+#' @details Use \code{qdapRegex:::examine_regex(regex_supplement)} to 
+#' interactively explore the regular expressions in \code{regex_usa}.  This will 
+#' provide a browser + console based break down of each regex in the dictionary.
+#' @format A list with 21 elements
 #' @examples 
 #' time <- rm_(pattern="@@time_12_hours")
 #' time("I will go at 12:35 pm")
@@ -214,5 +247,23 @@ NULL
 #' ## Validate pages
 #' page_val <- validate("@@pages2", FALSE)
 #' page_val(c(66, "78-82", "hello world", TRUE, "44-45; 56"))
+#' 
+#' ## Split on last occurrence
+#' x <- c(
+#'     "test@@aol@@fg.mm.com", 
+#'     "test@@hotmail.com", 
+#'     "test@@xyz@@rr@@lk.edu", 
+#'     "test@@abc.xx@@zz.vv.net"
+#' )
+#' 
+#' strsplit(x, S("@@last_occurrence", "\\."), perl=TRUE)
+#' strsplit(x, S("@@last_occurrence", "@@"), perl=TRUE)
+#' 
+#' ## True Word Boundaries
+#' x <- "this is _not a word666 and this is not a word too." 
+#' ## Standard regex word boundary
+#' rm_default(x, pattern=bind("not a word"))
+#' ## Alphabetic only word boundaries
+#' rm_default(x, pattern=S("@@word_boundary", "not a word"))
 #' }
 NULL

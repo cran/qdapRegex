@@ -2,7 +2,7 @@
 #' 
 #' convenience function to 
 #' 
-#' @param pattern A character string starting with \code{"@@"} and a regular 
+#' @param pattern A character string starting with \code{"@@"} that is a regular 
 #' expression from a \pkg{qdapRegex} dictionary.
 #' @param dictionary A dictionary of canned regular expressions to search within.
 #' @return Returns a single string regular expression from one of the 
@@ -10,7 +10,8 @@
 #' @keywords get grab
 #' @details Many R regular expressions contain doubled backslashes that are not 
 #' used in other regex interpreters.  Using \code{\link[base]{cat}} can remove 
-#' backslash escapes (see \bold{Examples}).
+#' backslash escapes (see \bold{Examples}) or \code{\link[utils]{URLencode}}
+#' if using in a url.
 #' @export
 #' @examples
 #' grab("@@rm_white")
