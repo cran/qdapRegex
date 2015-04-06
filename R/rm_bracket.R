@@ -31,6 +31,8 @@
 #' @keywords bracket
 #' @references \url{http://stackoverflow.com/q/8621066/1000343} 
 #' @author  Martin Morgan and Tyler Rinker <tyler.rinker@@gmail.com>.
+#' @family rm_ functions
+#' @include utils.R
 #' @export
 #' @seealso \code{\link[base]{gsub}},
 #' \code{\link[qdapRegex]{rm_between}},
@@ -99,6 +101,7 @@ rm_bracket <- function(text.var, pattern = "all", trim = TRUE, clean = TRUE,
 }
 
 
+#' @include utils.R
 #' @export
 #' @rdname rm_bracket
 #' @return \code{rm_round} - returns a character string with round brackets removed.
@@ -117,6 +120,8 @@ rm_round <- function(text.var, pattern = "(", trim = TRUE, clean = TRUE,
         dictionary = dictionary, ...)
 }
 
+
+#' @include utils.R
 #' @export
 #' @rdname rm_bracket
 #' @return \code{rm_square} - returns a character string with square brackets 
@@ -136,6 +141,8 @@ rm_square <- function(text.var, pattern = "[", trim = TRUE, clean = TRUE,
         dictionary = dictionary, ...)
 }
 
+
+#' @include utils.R
 #' @export
 #' @rdname rm_bracket
 #' @return \code{rm_curly} - returns a character string with curly brackets 
@@ -155,6 +162,8 @@ rm_curly <- function(text.var, pattern = "{", trim = TRUE, clean = TRUE,
         dictionary = dictionary, ...)
 }
 
+
+#' @include utils.R
 #' @export
 #' @rdname rm_bracket
 #' @return \code{rm_angle} - returns a character string with angle brackets 
@@ -196,6 +205,8 @@ bracket_convert <- function(x) {
     angle = c("<", ">")     
 )
 
+
+#' @include utils.R
 #' @export
 #' @rdname rm_bracket
 #' @return \code{rm_bracket_multiple} - returns a character string with 
@@ -302,4 +313,3 @@ function(text.var, pattern = "all", include.markers = FALSE, merge = TRUE){
     }
     out
 }
-

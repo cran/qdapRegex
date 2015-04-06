@@ -25,6 +25,8 @@
 #' secondary regular expression from the \code{\link[qdapRegex]{regex_usa}} 
 #' data (or other dictionary) via (\code{pattern = "@@rm_citation2"} or 
 #' \code{pattern = "@@rm_citation3"}). See \bold{Examples} for example usage. 
+#' @family rm_ functions
+#' @include utils.R
 #' @export
 #' @seealso \code{\link[base]{gsub}},
 #' \code{\link[stringi]{stri_extract_all_regex}}
@@ -94,8 +96,16 @@
 #'     xlab("Duration") +
 #'     scale_x_continuous(expand = c(0,0),
 #'         limits = c(0, nchar(unbag(parts[[1]])) + 25)) +
-#'     theme_black() +
-#'     theme(panel.grid.major=element_line(color="grey20"))
+#'     theme_grey() +
+#'     theme(
+#'         panel.grid.major=element_line(color="grey20"),
+#'         panel.grid.minor=element_line(color="grey20"),
+#'         plot.background = element_rect(fill="black"),
+#'         panel.background = element_rect(fill="black"),
+#'         panel.border = element_rect(colour = "grey50", fill=NA, size=1),
+#'         axis.text=element_text(color="grey50"),    
+#'         axis.title=element_text(color="grey50")  
+#'     )
 #' }
 rm_citation <- 
 function (text.var, trim = !extract, clean = TRUE, pattern = "@rm_citation", 
