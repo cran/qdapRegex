@@ -86,10 +86,16 @@ rm_between <- function(text.var, left, right, trim = TRUE, clean = TRUE,
     pattern <- paste(pattern, collapse="|")
 
     if (extract) {
+        if(left == '"' && right == '"'){
+    	    if (!trim) {
+                return(ext(rm_between_quote(text.var)))
+        	}
+    	    return(ext(lapply(rm_between_quote(text.var), Trim)))        
+        }
     	if (!trim) {
-            return(stringi::stri_extract_all_regex(text.var, pattern))
+            return(ext(stringi::stri_extract_all_regex(text.var, pattern)))
     	}
-    	return(lapply(stringi::stri_extract_all_regex(text.var, pattern), Trim))
+    	return(ext(lapply(stringi::stri_extract_all_regex(text.var, pattern), Trim)))
     }
 
     out <- gsub(pattern, replacement, text.var, perl = TRUE, ...)
@@ -98,6 +104,16 @@ rm_between <- function(text.var, left, right, trim = TRUE, clean = TRUE,
     out
 }
 
+rm_between_quote <- function(x){
+        lapply(rm_default(
+            x, 
+            pattern = '"[^"]*"', 
+            extract=TRUE
+        ), function(y){
+                gsub('^"|"$', '', y) 
+            }
+        )
+}
 
 rm_between_subber <- function(left, right, include.markers, dictionary) {
     pattern <- c("@rm_between", "@rm_between2")[2 -  as.numeric(include.markers)]
@@ -195,5 +211,5 @@ function(text.var, left, right, with = FALSE, merge = TRUE){
             }))            
         }
     }
-    out
+    ext(out)
 }

@@ -8,8 +8,8 @@
 #' 
 #' The \pkg{qdapRegex} package does not aim to compete with string manipulation 
 #' packages such as 
-#' \href{http://cran.r-project.org/web/packages/stringr/index.html}{\pkg{stringr}} 
-#' or \href{http://cran.r-project.org/web/packages/stringi/index.html}{\pkg{stringi}} 
+#' \href{http://cran.r-project.org/package=stringr}{\pkg{stringr}} 
+#' or \href{http://cran.r-project.org/package=stringi}{\pkg{stringi}} 
 #' but is meant to provide access to canned, common regular expression patterns 
 #' that can be used within \pkg{qdapRegex}, with \pkg{R}'s own regular 
 #' expression functions, or add on string manipulation packages such as 
@@ -73,7 +73,8 @@ NULL
 #'   \item{rm_nchar_words}{substring of letters (that may contain apostrophes) n letters long (apostrophe not counted in length); note contains \code{"\%s"} that is replaced by \code{\link[base]{sprintf}} and is not a valid regex on its own}
 #'   \item{rm_nchar_words2}{substring of letters (that may contain apostrophes) n letters long (apostrophe counted in length); note contains \code{"\%s"} that is replaced by \code{\link[base]{sprintf}} and is not a valid regex on its own}
 #'   \item{rm_non_ascii}{substring of 2 digits or letters a-f inside of a left and right angle brace in the form of \code{"<a4>"}}
-#'   \item{rm_number}{substring that may begin with dash (-) for negatives, and is (1) just whole number (no decimal), (2) whole number and decimal, or (3) just decimal value}
+#'   \item{rm_non_words}{substring of any character that isn't a letter, apostrophe, or single space}
+#'   \item{rm_number}{substring that may begin with dash (-) for negatives, and is (1) just whole number (no decimal), (2) whole number and decimal, or (3) just decimal value; regex pattern provided by Jason Gray}
 #'   \item{rm_percent}{substring beginning with (1) just whole number (no decimal), (2) whole number and decimal, or (3) just decimal value and followed by a percent sign (\%)}
 #'   \item{rm_phone}{phone numbers in the form of optional country code, valid 3 digit prefix, and 7 digits (may contain hyphens and parenthesis); logic is complex to explain (see \url{http://stackoverflow.com/a/21008254/1000343} for more)}
 #'   \item{rm_postal_code}{U.S. state abbreviations (and District of Columbia) that is constrained to just possible U.S. state names, not just two consecutive capital letters; taken from Mike Hamilton's submission found \url{http://regexlib.com/REDetails.aspx?regexp_id=2177}}
@@ -106,7 +107,7 @@ NULL
 #' regular expressions in \code{regex_usa}.  This will provide a browser + console
 #' based break down of each regex in the dictionary.
 #' @usage data(regex_usa) 
-#' @format A list with 51 elements 
+#' @format A list with 53 elements 
 NULL
 
 #' Supplemental Canned Regular Expressions
@@ -133,6 +134,7 @@ NULL
 #'   \item{last_occurrence}{last occurrence of a delimiter; note contains \code{"\%s"} that is replaced by \code{\link[base]{sprintf}} and is not a valid regex on its own (user supplies the delimiter)}
 #'   \item{pages}{substring with "pp." or "p.", optionally followed by a space, followed by 1 or more digits, optionally followed by a dash, optionally followed by 1 or more digits, optionally followed by a semicolon, optionally followed by a space, optionally followed by 1 or more digits; intended for extraction/removal purposes}
 #'   \item{pages2}{substring 1 or more digits, optionally followed by a dash, optionally followed by 1 or more digits, optionally followed by a semicolon, optionally followed by a space, optionally followed by 1 or more digits; intended for validation purposes}
+#'   \item{punctuation}{punctuation characters (\code{[:punct:]}) with the ability to negate; note contains \code{"\%s"} that is replaced by \code{\link[base]{sprintf}} and is not a valid regex on its own}
 #'   \item{run_split}{a regex that is useful for splitting strings in the characters runs (e.g., "wwxyyyzz" becomes "ww", "x", "yyy", "zz"); regex pattern retrieved from \href{http://stackoverflow.com/users/2994949/rawr}{Robert Redd}: \url{http://stackoverflow.com/a/29383435/1000343}}
 #'   \item{split_keep_delim}{regex string that splits on a delimiter and retains the delimiter}
 #'   \item{thousands_separator}{chunks digits > 4 into groups of 3 from right to left allowing for easy insertion of thousands separator; regex pattern retrieved from \href{http://stackoverflow.com/}{StackOverflow}'s stema: \url{http://stackoverflow.com/a/10612685/1000343}}
@@ -159,7 +161,7 @@ NULL
 #' @details Use \code{qdapRegex:::examine_regex(regex_supplement)} to 
 #' interactively explore the regular expressions in \code{regex_usa}.  This will 
 #' provide a browser + console based break down of each regex in the dictionary.
-#' @format A list with 22 elements
+#' @format A list with 23 elements
 #' @examples 
 #' time <- rm_(pattern="@@time_12_hours")
 #' time("I will go at 12:35 pm")
@@ -241,6 +243,7 @@ NULL
 #' 
 #' dat$word <- factor(dat$Word, levels=ord[order(ord[[2]]), 1])
 #' ggplot(dat, aes(x=freq, y=Word)) + geom_point()+ facet_grid(~Article)
+#' }
 #' 
 #' ## remove/extract pages numbers
 #' x <- c("I read p. 36 and then pp. 45-49", "it's on pp. 23-24;28")
@@ -273,5 +276,13 @@ NULL
 #' rm_default(x, pattern=bind("not a word"))
 #' ## Alphabetic only word boundaries
 #' rm_default(x, pattern=S("@@word_boundary", "not a word"))
-#' }
+#' 
+#' ## Remove punctuation with negation
+#' x <- c(
+#'     "I, love them!  Well I like them.  Do you like_ them?",
+#'     "Here are the punctuation characters: !"#$%&'()*+,\-./:;<=>?@@[\\\]^_`{|}~"
+#' )
+#' 
+#' rm_default(x, pattern=S("@@punctuation", ""))
+#' rm_default(x, pattern=S("@@punctuation", ".?!"))
 NULL
