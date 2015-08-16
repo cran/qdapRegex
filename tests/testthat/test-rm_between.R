@@ -46,13 +46,46 @@ test_that("rm_between is extracting betweened text multiple markers",{
 		
 })
 
-test_that("rm_between is extracting betweened quotes",{
+test_that("rm_between is extracting between double quotes",{
     
     x <- 'Fresh or chilled Atlantic salmon "Salmo salar" and Danube salmon "Hucho hucho"'
     
     expect_equal(rm_between(x, '"', '"', extract = TRUE),
         structure(list(c("Salmo salar", "Hucho hucho")), class = c("extracted", 
             "list"))
+    )
+
+})
+
+test_that("rm_between is extracting between single quotes",{
+    
+    x <- "Fresh or chilled Atlantic salmon 'Salmo salar' and Danube salmon 'Hucho hucho'"
+    
+    expect_equal(rm_between(x, "'", "'", extract = TRUE),
+        structure(list(c("Salmo salar", "Hucho hucho")), class = c("extracted", 
+            "list"))
+    )
+
+})
+
+test_that("rm_between can use regexes when fixed = FALSE",{
+    
+    x <-  c(
+        "There are 2.3 million species in the world",
+        "There are 2.3 billion species in the world"
+    )
+    
+    expect_equal(
+        rm_between(x, left='There', right = '[mb]illion', fixed = FALSE,
+            include=TRUE),
+        c("species in the world", "species in the world")
+    )
+    
+    expect_equal(    
+        rm_between(x, left='There', right = '[mb]illion', fixed = FALSE,
+            extract=TRUE, include=TRUE),
+        structure(list("There are 2.3 million", "There are 2.3 billion"), 
+            class = c("extracted", "list"))
     )
 
 })

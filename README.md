@@ -6,7 +6,7 @@
 [![Build Status](https://travis-ci.org/trinker/qdapRegex.svg?branch=master)](https://travis-ci.org/trinker/qdapRegex)
 [![Coverage Status](https://coveralls.io/repos/trinker/qdapRegex/badge.svg)](https://coveralls.io/r/trinker/qdapRegex)
 [![DOI](https://zenodo.org/badge/5398/trinker/qdapRegex.svg)](http://dx.doi.org/10.5281/zenodo.11284)
-<a href="https://img.shields.io/badge/Version-0.4.0-orange.svg"><img src="https://img.shields.io/badge/Version-0.4.0-orange.svg" alt="Version"/></a></p>
+<a href="https://img.shields.io/badge/Version-0.5.0-orange.svg"><img src="https://img.shields.io/badge/Version-0.5.0-orange.svg" alt="Version"/></a></p>
 
 <img src="inst/qdapRegex_logo/r_qdapRegex.png" width="320" alt="qdapRegex Logo">      
 [qdapRegex](http://trinker.github.com/qdapRegex_dev) is a collection of regular expression tools associated with the **qdap** package that may be useful outside of the context of discourse analysis.  Tools include removal/extraction/replacement of abbreviations, dates, dollar amounts, email addresses, hash tags, numbers, percentages, citations, person tags, phone numbers, times, and zip codes.
@@ -82,35 +82,18 @@ rm_citation(w, extract=TRUE)
 ```
 
 ```
-## [[1]]
-## [1] "V. Raptor, 1986"
-## 
-## [[2]]
-## [1] "Rinker, 2014"
-## 
-## [[3]]
-## [1] "The R Core Team (2014)"
-## 
-## [[4]]
-## [1] "Bunn (2005)"
-## 
-## [[5]]
-## [1] "Baer, 2005"
-## 
-## [[6]]
-## [1] "Wickham's (in press)"
-## 
-## [[7]]
-## [1] "Rinker's (n.d.)"
-## 
-## [[8]]
-## [1] "Foo, 2012" "Bar, 2014"
-## 
-## [[9]]
-## [1] "Uwe Ligges (2007)"
+## Warning: restarting interrupted promise evaluation
 ```
 
-### Extract Twitter Hash Tags, Name Tages, & URLs
+```
+## Warning: internal error -3 in R_decompress1
+```
+
+```
+## Error in eval(expr, envir, enclos): lazy-load database 'C:/R/R-3.2.2/library/qdapRegex/R/qdapRegex.rdb' is corrupt
+```
+
+### Extract Twitter Hash Tags, Name Tags, & URLs
 
 
 ```r
@@ -125,14 +108,15 @@ rm_hash(x, extract=TRUE)
 ```
 
 ```
-## [[1]]
-## [1] "#rstats"  "#ggplot2"
-## 
-## [[2]]
-## [1] "#magrittr" "#pipeR"    "#rstats"  
-## 
-## [[3]]
-## [1] "#user2014"
+## Warning: restarting interrupted promise evaluation
+```
+
+```
+## Warning: internal error -3 in R_decompress1
+```
+
+```
+## Error in eval(expr, envir, enclos): lazy-load database 'C:/R/R-3.2.2/library/qdapRegex/R/qdapRegex.rdb' is corrupt
 ```
 
 ```r
@@ -140,14 +124,15 @@ rm_tag(x, extract=TRUE)
 ```
 
 ```
-## [[1]]
-## [1] "@hadley"
-## 
-## [[2]]
-## [1] "@timelyportfolio"
-## 
-## [[3]]
-## [1] "@ramnath_vaidya"
+## Warning: restarting interrupted promise evaluation
+```
+
+```
+## Warning: internal error -3 in R_decompress1
+```
+
+```
+## Error in eval(expr, envir, enclos): lazy-load database 'C:/R/R-3.2.2/library/qdapRegex/R/qdapRegex.rdb' is corrupt
 ```
 
 ```r
@@ -155,14 +140,15 @@ rm_url(x, extract=TRUE)
 ```
 
 ```
-## [[1]]
-## [1] NA
-## 
-## [[2]]
-## [1] "http://renkun.me/r/2014/07/26/difference-between-magrittr-and-pipeR.html"
-## 
-## [[3]]
-## [1] "http://ramnathv.github.io/user2014-rcharts/#1"
+## Warning: restarting interrupted promise evaluation
+```
+
+```
+## Warning: internal error -3 in R_decompress1
+```
+
+```
+## Error in eval(expr, envir, enclos): lazy-load database 'C:/R/R-3.2.2/library/qdapRegex/R/qdapRegex.rdb' is corrupt
 ```
 
 ### Extract Bracketed Text
@@ -177,17 +163,15 @@ rm_bracket(y, extract=TRUE)
 ```
 
 ```
-## [[1]]
-## [1] "unintelligible"
-## 
-## [[2]]
-## [1] "laughter"     "interrupting"
-## 
-## [[3]]
-## [1] "reading"
-## 
-## [[4]]
-## [1] "is so much fun"
+## Warning: restarting interrupted promise evaluation
+```
+
+```
+## Warning: internal error -3 in R_decompress1
+```
+
+```
+## Error in eval(expr, envir, enclos): lazy-load database 'C:/R/R-3.2.2/library/qdapRegex/R/qdapRegex.rdb' is corrupt
 ```
 
 ```r
@@ -195,17 +179,15 @@ rm_curly(y, extract=TRUE)
 ```
 
 ```
-## [[1]]
-## [1] NA
-## 
-## [[2]]
-## [1] NA
-## 
-## [[3]]
-## [1] "reading"
-## 
-## [[4]]
-## [1] "is so much fun"
+## Warning: restarting interrupted promise evaluation
+```
+
+```
+## Warning: internal error -3 in R_decompress1
+```
+
+```
+## Error in eval(expr, envir, enclos): lazy-load database 'C:/R/R-3.2.2/library/qdapRegex/R/qdapRegex.rdb' is corrupt
 ```
 
 ```r
@@ -213,17 +195,15 @@ rm_round(y, extract=TRUE)
 ```
 
 ```
-## [[1]]
-## [1] NA
-## 
-## [[2]]
-## [1] "laughter"
-## 
-## [[3]]
-## [1] NA
-## 
-## [[4]]
-## [1] NA
+## Warning: restarting interrupted promise evaluation
+```
+
+```
+## Warning: internal error -3 in R_decompress1
+```
+
+```
+## Error in eval(expr, envir, enclos): lazy-load database 'C:/R/R-3.2.2/library/qdapRegex/R/qdapRegex.rdb' is corrupt
 ```
 
 ```r
@@ -231,17 +211,15 @@ rm_square(y, extract=TRUE)
 ```
 
 ```
-## [[1]]
-## [1] "unintelligible"
-## 
-## [[2]]
-## [1] "interrupting"
-## 
-## [[3]]
-## [1] NA
-## 
-## [[4]]
-## [1] NA
+## Warning: restarting interrupted promise evaluation
+```
+
+```
+## Warning: internal error -3 in R_decompress1
+```
+
+```
+## Error in eval(expr, envir, enclos): lazy-load database 'C:/R/R-3.2.2/library/qdapRegex/R/qdapRegex.rdb' is corrupt
 ```
 
 ### Extract Numbers
@@ -255,8 +233,15 @@ rm_number(z)
 ```
 
 ```
-## [1] "is an integer. and are not." "is a lot more than"         
-## [3] "hello world -.q"
+## Warning: restarting interrupted promise evaluation
+```
+
+```
+## Warning: internal error -3 in R_decompress1
+```
+
+```
+## Error in eval(expr, envir, enclos): lazy-load database 'C:/R/R-3.2.2/library/qdapRegex/R/qdapRegex.rdb' is corrupt
 ```
 
 ```r
@@ -264,12 +249,75 @@ rm_number(z, extract=TRUE)
 ```
 
 ```
-## [[1]]
-## [1] "-2"   "-4.3" "3.33"
-## 
-## [[2]]
-## [1] "123,456" "-.2"    
-## 
-## [[3]]
-## [1] NA
+## Warning: restarting interrupted promise evaluation
+```
+
+```
+## Warning: internal error -3 in R_decompress1
+```
+
+```
+## Error in eval(expr, envir, enclos): lazy-load database 'C:/R/R-3.2.2/library/qdapRegex/R/qdapRegex.rdb' is corrupt
+```
+
+```r
+as_numeric(rm_number(z, extract=TRUE))
+```
+
+```
+## Warning in lapply(x, function(y) {: restarting interrupted promise
+## evaluation
+```
+
+```
+## Warning in lapply(x, function(y) {: internal error -3 in R_decompress1
+```
+
+```
+## Error in lapply(x, function(y) {: lazy-load database 'C:/R/R-3.2.2/library/qdapRegex/R/qdapRegex.rdb' is corrupt
+```
+
+### Remove Non-Words & N Character Words
+
+
+```r
+x <- c(
+    "I like 56 dogs!",
+    "It's seventy-two feet from the px290.",
+    NA,
+    "What",
+    "that1is2a3way4to5go6.",
+    "What do you*% want?  For real%; I think you'll see.",
+    "Oh some <html>code</html> to remove"
+)
+
+rm_non_words(x)
+```
+
+```
+## Warning: restarting interrupted promise evaluation
+```
+
+```
+## Warning: internal error -3 in R_decompress1
+```
+
+```
+## Error in eval(expr, envir, enclos): lazy-load database 'C:/R/R-3.2.2/library/qdapRegex/R/qdapRegex.rdb' is corrupt
+```
+
+```r
+rm_nchar_words(rm_non_words(x), "1,2")
+```
+
+```
+## Warning: restarting interrupted promise evaluation
+```
+
+```
+## Warning: internal error -3 in R_decompress1
+```
+
+```
+## Error in eval(expr, envir, enclos): lazy-load database 'C:/R/R-3.2.2/library/qdapRegex/R/qdapRegex.rdb' is corrupt
 ```

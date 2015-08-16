@@ -17,6 +17,50 @@ And constructed with the following guidelines:
 * Bug fixes and misc changes bumps the patch
 
 
+qdapRegex 0.4.1-0.5.0
+----------------------------------------------------------------
+
+BUG FIXES
+
+* `rm_between` did not handle single quotation marks (`'`) as both the left and 
+  right boundary when `extract = TRUE`.  Related to issue #13
+  
+NEW FEATURES
+
+* `rm_transcript_time` added to remove transcript specific style of time stamp 
+  tagging.  See http://help-nv10mac.qsrinternational.com/desktop/procedures/import_audio_or_video_transcripts.htm   for details.
+  
+* `as_time` and `as_time2`  added for use with `rm_time`/`rm_time_trnscript`.  
+  These are convert to the standard HH:MM:SS.OS format and optionally converts 
+  to `as.POSIXlt`.  The former outputs a list of vectors of times while the 
+  later wraps `as_time` with `unlist`.
+
+MINOR FEATURES
+
+* `except_first` added to `regex_supplement` dictionary to provide a means to 
+  remove all occurrences of a character except the first appearance.  Regex 
+  from: http://stackoverflow.com/a/31458261/1000343
+  
+* `rm_between` and `r_between_multiple` pick up a `fixed` argument.  Previously,
+  `left` and `right` boundaries containing regular expression special characters
+  were fixed by default (escaped).  This did not allow for the powerful use of a 
+  regular expression for left/right boundaries.  The `fixed = TRUE` behavior 
+  is still the default but users can now set `fixed = FALSE` to work with 
+  regular expression boundaries.  This new feature was inspired by @Ronak Shah's
+  StackOverflow question: http://stackoverflow.com/q/31623069/1000343  
+
+CHANGES
+
+* `word_boundary`, `word_boundary_left`, `word_boundary_right` regexes in the
+  `regex_supplement` did not include apostrophes as a viable word character. 
+  Apostrophes are now included as a word character.
+  
+* `explain` no longer prints the regular expression explanation to the command 
+  line.  Instead the link to http://www.regexper.com is printed.  This change
+  is because http://rick.measham.id.au/paste/explain no longer appears to be 
+  working.  The text explanation functionality will return if the website 
+  becomes operational again or if a suitable substitute can be found.
+
 qdapRegex 0.4.0
 ----------------------------------------------------------------
 
@@ -26,7 +70,7 @@ BUG FIXES
   without separating it into multiple strings.  For example "12345" became 
   "123" "45".  Also 444,44 will not be removed/extracted as it is not a valid
   comma separated number.  These behavior have been corrected and the unit test 
-  now include these cases.  Thanks to Jason Gray for the reworked of the regex.
+  now include these cases.  Thanks to Jason Gray for the rework of the regex.
   It is simpler and more accurate.
   
 * `rm_between` did not handle quotation marks (`"`) as both the left and right 
@@ -60,10 +104,6 @@ MINOR FEATURES
 
 * `punctuation` added to `regex_supplement` dictionary for easy negation of
   `[:punct:]` class.
-
-IMPROVEMENTS
-
-CHANGES
 
 
 qdapRegex 0.2.1 - 0.3.2
