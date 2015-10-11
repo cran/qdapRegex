@@ -1,6 +1,6 @@
-52e4e281ff78a64da4abf7795c633c17 *DESCRIPTION
+61974a63913be58e691753f2c251367f *DESCRIPTION
 e091a9a13c9b428a0d88692828738541 *NAMESPACE
-5919baf719df031b364309fca6e17c99 *NEWS
+8023f1992b8522e2eaf8ebbd7e547729 *NEWS
 d729cf2fb98bdb2c8b36ab6949377489 *R/S.R
 02e64399ac9c30db7b0aff1446e8cef9 *R/bind.R
 a0f37c44ea3df9013dd70968399001e3 *R/bind_or.R
@@ -52,11 +52,11 @@ a93cd245f56e9a51b910f8a1306964c5 *R/rm_repeated_phrases.R
 5f75cf2260c674d0aabb6625a5212494 *R/rm_zip.R
 13126a1fdff9a07f8aa7bdbe891a5d65 *R/utils.R
 09569b113c0edb2a0797ef43650c7e39 *R/validate.R
-9f3c4b9916b2cd22ff3183e53f590e17 *README.md
-43120bc714a3a6e2018f826064972232 *data/regex_cheat.rda
-7a0f57c698dfd1d52859e9ea396d3269 *data/regex_supplement.rda
-3592fa92ce428e96622ce179b8efc5ae *data/regex_usa.rda
-23146e8f9b1581ad1239c80b3712515d *inst/CITATION
+16da7d55485044d0cf20fcc2fe81ff1f *README.md
+f97e7e8351a3bdf83c99810e970b4885 *data/regex_cheat.rda
+25a668d392a471feab9d6a2e4f41e07b *data/regex_supplement.rda
+84d6d2bcc4bb6eadf040340ad809a296 *data/regex_usa.rda
+4b0d9484e653f1e9996a392ed0c6c83e *inst/CITATION
 7c9c52f32c73f4b8a5f042b66d3793d2 *inst/additional_script/view_regex
 617744f27042ca492494eae5a5afa384 *inst/qdapRegex_logo/r_qdapRegex.png
 db1a44f395451f1e014c96fed3753d8c *inst/qdapRegex_logo/r_qdapRegex.pptx
@@ -151,7 +151,7 @@ fe99095e2253c5c553c7ab2b3f0749ca *tests/testthat/test-rm_endmark.R
 1f4cdbe5b8c126c8cf3addfacf11ff30 *tests/testthat/test-rm_nchar_word.R
 2b5f14c64878a335502303c66eea058c *tests/testthat/test-rm_non_ascii.R
 e1b58e4e7c49128e942f00b02e4a17a7 *tests/testthat/test-rm_non_words.R
-f36ba306220a5552e77323a6e6bb4075 *tests/testthat/test-rm_number.R
+003067b0d9bfc36f8eebdf1bac360025 *tests/testthat/test-rm_number.R
 700c2417f8404469b9e14649e9976b75 *tests/testthat/test-rm_percent.R
 deed53561b856251779b620355042024 *tests/testthat/test-rm_phone.R
 a4761e48c4e105a428b0e278d4f0b7cd *tests/testthat/test-rm_postal_code.R
