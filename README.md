@@ -6,14 +6,16 @@
 [![Build Status](https://travis-ci.org/trinker/qdapRegex.svg?branch=master)](https://travis-ci.org/trinker/qdapRegex)
 [![Coverage Status](https://coveralls.io/repos/trinker/qdapRegex/badge.svg)](https://coveralls.io/r/trinker/qdapRegex)
 [![DOI](https://zenodo.org/badge/5398/trinker/qdapRegex.svg)](http://dx.doi.org/10.5281/zenodo.11284)
-<a href="https://img.shields.io/badge/Version-0.5.2-orange.svg"><img src="https://img.shields.io/badge/Version-0.5.2-orange.svg" alt="Version"/></a></p>
+<a href="https://img.shields.io/badge/Version-0.7.2-orange.svg"><img src="https://img.shields.io/badge/Version-0.7.2-orange.svg" alt="Version"/></a></p>
 
-<img src="inst/qdapRegex_logo/r_qdapRegex.png" width="320" alt="qdapRegex Logo">      
+  
+![](tools/qdapRegex_logo/r_qdapRegex.png)
+
 [qdapRegex](http://trinker.github.com/qdapRegex_dev) is a collection of regular expression tools associated with the **qdap** package that may be useful outside of the context of discourse analysis.  Tools include removal/extraction/replacement of abbreviations, dates, dollar amounts, email addresses, hash tags, numbers, percentages, citations, person tags, phone numbers, times, and zip codes.  Functions that remove/replace are prefixed with `rm_`.  Each of these functions has an extraction counterpart prefixed with `ex_`.
 
 
 
-The **qdapRegex** package does not aim to compete with string manipulation packages such as [**stringr**](http://cran.r-project.org/package=stringr) or [**stringi**](http://cran.r-project.org/package=stringi) but is meant to provide access to canned, common regular expression patterns that can be used within **qdapRegex**, with **R**'s own regular expression functions, or add on string manipulation packages such as **stringr** and **stringi**.
+The **qdapRegex** package does not aim to compete with string manipulation packages such as [**stringr**](https://CRAN.R-project.org/package=stringr) or [**stringi**](https://CRAN.R-project.org/package=stringi) but is meant to provide access to canned, common regular expression patterns that can be used within **qdapRegex**, with **R**'s own regular expression functions, or add on string manipulation packages such as **stringr** and **stringi**.
 
 The functions in **qdapRegex** work on a dictionary system.  The current implementation defaults to a United States flavor of canned regular expressions.  Users may submit proposed region specific regular expression dictionaries that contain the same fields as the [`regex_usa`](http://trinker.github.io/qdapRegex/regex_usa.html) data set or improvements to regular expressions in current dictionaries. Please submit proposed regional regular expression dictionaries via: https://github.com/trinker/qdapRegex/issues
 
@@ -43,10 +45,6 @@ if (!require("pacman")) install.packages("pacman")
 pacman::p_load_gh("trinker/qdapRegex")
 ```
 
-## Help
-
-- [Web Page](http://trinker.github.com/qdapRegex/)     
-- [Package PDF Help Manual](https://dl.dropboxusercontent.com/u/61803503/qdapRegex.pdf)   
 
 ## Contact
 
@@ -67,7 +65,7 @@ library(qdapRegex)
 ### Extract Citations
 
 ```r
-w <- c("Hello World (V. Raptor, 1986) bye",
+w <- c("Hello World (V. Raptor, 1986) bye (Foo, 2012, pp. 1-2)",
     "Narcissism is not dead (Rinker, 2014)",
     "The R Core Team (2014) has many members.",
     paste("Bunn (2005) said, \"As for elegance, R is refined, tasteful, and",
@@ -76,7 +74,8 @@ w <- c("Hello World (V. Raptor, 1986) bye",
     "Wickham's (in press) Tidy Data should be out soon.",
     "Rinker's (n.d.) dissertation not so much.",
     "I always consult xkcd comics for guidance (Foo, 2012; Bar, 2014).",
-    "Uwe Ligges (2007) says, \"RAM is cheap and thinking hurts\""
+    "Uwe Ligges (2007) says, \"RAM is cheap and thinking hurts\"",
+    "Silly (Bar, 2014) stuff is what Bar (2014, 2012) said."
 )
 
 ex_citation(w)
@@ -84,7 +83,7 @@ ex_citation(w)
 
 ```
 ## [[1]]
-## [1] "V. Raptor, 1986"
+## [1] "V. Raptor, 1986" "Foo, 2012"      
 ## 
 ## [[2]]
 ## [1] "Rinker, 2014"
@@ -109,6 +108,28 @@ ex_citation(w)
 ## 
 ## [[9]]
 ## [1] "Uwe Ligges (2007)"
+## 
+## [[10]]
+## [1] "Bar, 2014"        "Bar (2014, 2012)"
+```
+
+```r
+as_count(ex_citation(w))
+```
+
+```
+##             Author     Year n
+## 7              Bar     2014 3
+## 6              Foo     2012 2
+## 2             Baer     2005 1
+## 5              Bar     2012 1
+## 3             Bunn     2005 1
+## 8           Rinker     2014 1
+## 11          Rinker     n.d. 1
+## 9  The R Core Team     2014 1
+## 4       Uwe Ligges     2007 1
+## 1        V. Raptor     1986 1
+## 10         Wickham in press 1
 ```
 
 ### Extract Twitter Hash Tags, Name Tags, & URLs
@@ -348,19 +369,19 @@ as_time(ex_time(x), as.POSIXlt = TRUE)
 
 ```
 ## [[1]]
-## [1] "2015-12-04 00:03:04 EST"
+## [1] "2017-04-09 00:03:04 EDT"
 ## 
 ## [[2]]
-## [1] "2015-12-04 00:10:47 EST" "2015-12-04 00:00:47 EST"
+## [1] "2017-04-09 00:10:47 EDT" "2017-04-09 00:00:47 EDT"
 ## 
 ## [[3]]
 ## [1] NA
 ## 
 ## [[4]]
-## [1] "2015-12-04 00:12:04 EST"
+## [1] "2017-04-09 00:12:04 EDT"
 ## 
 ## [[5]]
-## [1] "2015-12-04 00:12:04 EST" "2015-12-04 00:01:22 EST"
+## [1] "2017-04-09 00:12:04 EDT" "2017-04-09 00:01:22 EDT"
 ```
 
 ### Remove Non-Words & N Character Words

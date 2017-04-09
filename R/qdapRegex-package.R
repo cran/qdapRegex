@@ -8,8 +8,8 @@
 #' 
 #' The \pkg{qdapRegex} package does not aim to compete with string manipulation 
 #' packages such as 
-#' \href{http://cran.r-project.org/package=stringr}{\pkg{stringr}} 
-#' or \href{http://cran.r-project.org/package=stringi}{\pkg{stringi}} 
+#' \href{https://CRAN.R-project.org/package=stringr}{\pkg{stringr}} 
+#' or \href{https://CRAN.R-project.org/package=stringi}{\pkg{stringi}} 
 #' but is meant to provide access to canned, common regular expression patterns 
 #' that can be used within \pkg{qdapRegex}, with \pkg{R}'s own regular 
 #' expression functions, or add on string manipulation packages such as 
@@ -63,7 +63,7 @@ NULL
 #'   \item{rm_date2}{dates in the form of 3-9 letters followed by one or more spaces, 2 digits, a comma(,), one or more spaces, and 4 digits}
 #'   \item{rm_date3}{dates in the form of XXXX-XX-XX; hyphen separated string of 4 digit year, 2 digit month, and 2 digit day}
 #'   \item{rm_date4}{dates in the form of both \code{rm_date}, \code{rm_date2}, and \code{rm_date3}}
-#'   \item{rm_dollar}{substring with dollar sign ($) followed by (1) just dollars (no decimal), (2) dollars and cents (whole number and decimal), or (3) just cents (decimal value)}
+#'   \item{rm_dollar}{substring with dollar sign ($) followed by (1) just dollars (no decimal), (2) dollars and cents (whole number and decimal), or (3) just cents (decimal value); dollars may contain commas}
 #'   \item{rm_email}{substring with (1) alphanumeric characters or dash (-), plus (+), or underscore (_) (\emph{This may be repeated}) (2) followed by at (@@), followed by the same regex sequence as before the at (@@), and ending with dot (.) and 2-14 digits}
 #'   \item{rm_emoticon}{common emoticons (logic is complicated to explain in words) using ">?[:;=8XB]\{1\}[-~+o^]?[|\")(&gt;DO>\{pP3/]+|</?3|XD+|D:<|x[-~+o^]?[|\")(&gt;DO>\{pP3/]+" regex pattern; general pattern is optional hat character, followed by eyes character, followed by optional nose character, and ending with a mouth character}
 #'   \item{rm_endmark}{substring of the last endmark group in a string; endmarks include (! ? . * OR |)}
@@ -147,7 +147,7 @@ NULL
 #'   \item{word_boundary}{A true word boundary that only includes alphabetic characters; based on \url{www.rexegg.com}'s suggestion taken from \href{http://www.rexegg.com/regex-boundaries.html#real-word-boundary}{discussion of true word boundaries}; note contains \code{"\%s"} that is replaced by \code{\link[base]{sprintf}} and is not a valid regex on its own}
 #'   \item{word_boundary_left}{A true left word boundary that only includes alphabetic characters; based on \url{www.rexegg.com}'s suggestion taken from \href{http://www.rexegg.com/regex-boundaries.html#real-word-boundary}{discussion of true word boundaries}}
 #'   \item{word_boundary_right}{A true right word boundary that only includes alphabetic characters; based on \url{www.rexegg.com}'s suggestion taken from \href{http://www.rexegg.com/regex-boundaries.html#real-word-boundary}{discussion of true word boundaries}}	
-#'   \item{youtube_id}{substring of the video id from a \href{https://www.youtube.com}{YouTube} video; taken from Jacob Overgaard's submission found \url{http://regex101.com/r/kU7bP8/1}}
+#'   \item{youtube_id}{substring of the video id from a \href{https://www.youtube.com}{YouTube} video; taken from Jacob Overgaard's submission found https://regex101.com/r/kU7bP8/1}
 #' } 
 #' 
 #' Regexes from this data set can be added to the \code{pattern} argument of any 

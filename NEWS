@@ -17,6 +17,33 @@ And constructed with the following guidelines:
 * Bug fixes and misc changes bumps the patch
 
 
+
+qdapRegex 0.7.0 - 0.7.2
+----------------------------------------------------------------
+
+BUG FIXES
+
+* `rm_dollar`'s regex now allows for commas in the dollar portion.
+
+NEW FEATURES
+
+* `as_count` added to convert `ex_citation` into counts of citations.
+
+MINOR FEATURES
+
+* `ex_` added to compliment the `rm_` function.
+
+IMPROVEMENTS
+
+* `grab` and functions that use `@rm_xxx` now work on `ex_xxx` as well.
+
+CHANGES
+
+* `explain` is fully functional again as http://rick.measham.id.au/paste/explain
+  is again functioning.
+
+
+
 qdapRegex 0.6.0
 ----------------------------------------------------------------
 
