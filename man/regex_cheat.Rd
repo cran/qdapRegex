@@ -5,7 +5,9 @@
 \alias{regex_cheat}
 \title{A dataset containing the regex chunk name, the regex string, and a 
 description of what the chunk does.}
-\format{A data frame with 6 rows and 3 variables}
+\format{
+A data frame with 6 rows and 3 variables
+}
 \usage{
 data(regex_cheat)
 }
@@ -20,7 +22,3 @@ description of what the chunk does.
   \item What it Does. Description of what the regex chunk does.
 }
 }
-\references{
-\url{http://www.rexegg.com}
-}
-\keyword{datasets}

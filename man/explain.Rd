@@ -4,8 +4,12 @@
 \alias{explain}
 \title{Visualize Regular Expressions}
 \usage{
-explain(pattern, open = FALSE, print = TRUE,
-  dictionary = getOption("regex.library"))
+explain(
+  pattern,
+  open = FALSE,
+  print = TRUE,
+  dictionary = getOption("regex.library")
+)
 }
 \arguments{
 \item{pattern}{A character string containing a regular expression or a
@@ -13,14 +17,14 @@ character string starting with \code{"@"} that is a regular
 expression from a \pkg{qdapRegex} dictionary.}
 
 \item{open}{logical.  If \code{TRUE} the default browser will attempt to 
-open \url{http://www.regexper.com} page.  Setting \code{open = 2} will 
+open \url{https://regexper.com/} page.  Setting \code{open = 2} will 
 utilize an unstable visualization via \url{https://www.debuggex.com}.  This 
 approach utilizes a non-api scrape that is subject to change and not 
 guaranteed to be stable.  The regex is set to Python flavor which handles 
-lookbehinds that the Java based \url{http://www.regexper.com} does not.  This
+lookbehinds that the Java based \url{https://regexper.com/} does not.  This
 functionality was developed by 
-\href{http://www.matthewflickinger.com}{Matthew Flickinger} (see 
-\url{http://stackoverflow.com/a/27574103/1000343} for details).  Note that 
+\href{https://www.matthewflickinger.com}{Matthew Flickinger} (see 
+\url{https://stackoverflow.com/a/27574103/1000343} for details).  Note that 
 the user must have \pkg{httr} installed or will be prompted if the package
 cannot be \code{\link[base]{require}}d.}
 
@@ -29,16 +33,15 @@ cannot be \code{\link[base]{require}}d.}
 \item{dictionary}{A dictionary of canned regular expressions to search within.}
 }
 \value{
-Prints \url{http://rick.measham.id.au/paste/explain} to the console,
+Prints \url{https://regexper.com/} to the console,
 attempts to open the url to the visual representation provided by
-\url{http://www.regexper.com}, and invisibly returns a list with the URLs.
+\url{https://regexper.com/}, and invisibly returns a list with the URLs.
 }
 \description{
-Visualize regular expressions using \url{http://www.regexper.com} &
-\url{http://rick.measham.id.au/paste/explain}.
+Visualize regular expressions using \url{https://regexper.com/}
 }
 \details{
-Note that \url{http://www.regexper.com} is a Java based regular 
+Note that \url{https://regexper.com/} is a Java based regular 
 expression viewer. Lookbehind and negative lookbehinds are not respected.
 }
 \examples{
@@ -50,14 +53,12 @@ explain("@rm_time", open = TRUE)
 }
 }
 \references{
-\url{http://stackoverflow.com/a/27489977/1000343} \cr
-\url{http://www.regexper.com} \cr
-\url{http://rick.measham.id.au/paste/explain} \cr
-\url{http://stackoverflow.com/a/27574103/1000343}
+\url{https://stackoverflow.com/a/27489977/1000343} \cr
+\url{https://regexper.com/} \cr
+\url{https://stackoverflow.com/a/27574103/1000343}
 }
 \seealso{
-\url{http://www.regexper.com} \cr
-\url{http://rick.measham.id.au/paste/explain}
+\url{https://regexper.com/}
 }
 \author{
 Ananda Mahto, Matthew Flickinger, and Tyler Rinker <tyler.rinker@gmail.com>.
